@@ -9,7 +9,7 @@
     android:padding="15dp">
 
     <ImageView
-        android:id="@+id/imgAlbum"
+        android:id="@+id/AlbumView"
         android:layout_width="200dp"
         android:layout_height="200dp"
         app:srcCompat="@drawable/your_name" />
@@ -18,7 +18,8 @@
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="cursive"
         android:gravity="center"
-        android:text="Album Title"
-        android:textSize="20sp" />
+        android:text="Title"
+        android:textSize="18sp" />
 </LinearLayout>

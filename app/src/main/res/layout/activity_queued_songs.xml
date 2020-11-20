@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QueueActivity"
+    tools:context=".QueuedSongsActivity"
     android:background="@drawable/wall3">
 
     <ListView
-        android:id="@+id/queueList"
+        android:id="@+id/addedSongs"
         android:layout_width="411dp"
         android:layout_height="613dp"
         android:layout_marginTop="108dp"

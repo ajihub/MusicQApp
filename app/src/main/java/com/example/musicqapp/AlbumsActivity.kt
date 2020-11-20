@@ -11,54 +11,39 @@ import android.widget.BaseAdapter
 import android.widget.GridView
 import kotlinx.android.synthetic.main.album_entry.view.*
 
-class AlbumActivity : AppCompatActivity() {
+class AlbumsActivity : AppCompatActivity() {
     var adapter: AlbumAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_album)
-
+        setContentView(R.layout.activity_albums)
         adapter = AlbumAdapter(this)
-        findViewById<GridView>(R.id.albumList).adapter = adapter
-    }
-
+        findViewById<GridView>(R.id.albumList).adapter = adapter }
     class AlbumAdapter : BaseAdapter {
         var context: Context? = null
-        val albumList = MainActivity.albumArray
-
+        val albsList = MainActivity.albumNames
         constructor(context: Context) : super(){
-            this.context = context
-        }
-
+            this.context = context }
         override fun getCount(): Int {
-            return albumList.size
-        }
-
+            return albsList.size }
         override fun getItem(position: Int): Any {
-            return albumList[position]
-        }
-
+            return albsList[position] }
         override fun getItemId(position: Int): Long {
-            return position.toLong()
-        }
-
+            return position.toLong() }
         override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-            val album = this.albumList[position]
+            val album = this.albsList[position]
 
-            var inflator = context!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-            var view = inflator.inflate(R.layout.album_entry, null)
-            view.imgAlbum.setOnClickListener {
-                val intent = Intent(context, AlbumDetails::class.java)
+            var inflater = context!!.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+            var albsview = inflater.inflate(R.layout.album_entry, null)
+            albsview.AlbumView.setOnClickListener {
+                val intent = Intent(context, AlbumDetailsActivity::class.java)
                 intent.putExtra("name", album)
                 intent.putExtra("songList", MainActivity.songsArray)
                 intent.putExtra("position", position)
-                context!!.startActivity(intent)
-            }
-            view.imgAlbum.setImageResource(MainActivity.albumPics[position])
-            view.name.text = album
-
-            return view
+                context!!.startActivity(intent) }
+            albsview.AlbumView.setImageResource(MainActivity.sourcepictures[position])
+            albsview.name.text = album
+            return albsview
         }
-
     }
 }

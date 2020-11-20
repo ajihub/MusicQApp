@@ -4,14 +4,14 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/launchericon"
         android:label="MusicQApp"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/launchericon"
         android:supportsRtl="true"
         android:theme="@style/Theme.MusicQApp">
-        <activity android:name="com.example.musicqapp.AlbumDetails"></activity>
-        <activity android:name="com.example.musicqapp.AlbumActivity" />
-        <activity android:name="com.example.musicqapp.QueueActivity" />
+        <activity android:name="com.example.musicqapp.AlbumDetailsActivity"></activity>
+        <activity android:name="com.example.musicqapp.AlbumsActivity" />
+        <activity android:name="com.example.musicqapp.QueuedSongsActivity" />
         <activity android:name="com.example.musicqapp.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
