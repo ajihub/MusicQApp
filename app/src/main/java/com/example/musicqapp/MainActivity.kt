@@ -1,5 +1,6 @@
 package com.example.musicqapp
 
+import android.content.ClipData
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,16 +8,15 @@ import android.view.ContextMenu
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import android.widget.Toast
+import android.widget.*
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
     private fun append(arr: Array<String>, element: String): Array<String>{
         val list: MutableList<String> = arr.toMutableList()
         list.add(element)
         return list.toTypedArray()
+
     }
     companion object{
         val albumNames = arrayOf("Kimi No Nawa","Naruto","Weathering with You","Your Lie in April", "Spirited Away", "Darling in the Franxx")
@@ -45,12 +45,17 @@ class MainActivity : AppCompatActivity() {
         val inflater = menuInflater
         inflater.inflate(R.menu.queue_menu, menu)
     }
+
     override fun onContextItemSelected(item: MenuItem): Boolean {
         val info = item.menuInfo as AdapterView.AdapterContextMenuInfo
         return when (item.itemId){
             R.id.add_to_queue ->{
                 songQueue = append(songQueue, songsArray[info.position])
-                Toast.makeText(this, "${songsArray[info.position]} moved to queue", Toast.LENGTH_LONG).show()
+                val snackbar = Snackbar.make(findViewById<ListView>(R.id.allSongs), "${songsArray[info.position]} moved to queue", Snackbar.LENGTH_LONG)
+                snackbar.setAction("QUEUE", {
+                    startActivity(Intent(applicationContext, QueuedSongsActivity::class.java))
+                })
+                snackbar.show()
                 return true
             }
             else -> super.onContextItemSelected(item) }
