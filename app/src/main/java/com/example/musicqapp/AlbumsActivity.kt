@@ -38,10 +38,10 @@ class AlbumsActivity : AppCompatActivity() {
             albsview.AlbumView.setOnClickListener {
                 val intent = Intent(context, AlbumDetailsActivity::class.java)
                 intent.putExtra("name", album)
-                intent.putExtra("songList", MainActivity.songsArray)
+                intent.putExtra("songList", MainActivity.mainList)
                 intent.putExtra("position", position)
                 context!!.startActivity(intent) }
-            albsview.AlbumView.setImageResource(MainActivity.sourcepictures[position])
+            albsview.AlbumView.setImageResource(MainActivity.strictures[position])
             albsview.name.text = album
             return albsview
         }
