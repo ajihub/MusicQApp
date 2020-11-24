@@ -12,8 +12,6 @@ import android.widget.GridView
 import kotlinx.android.synthetic.main.album_entry.view.*
 
 class AlbumsActivity : AppCompatActivity() {
-    var adapter: AlbumAdapter? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_albums)
@@ -46,4 +44,5 @@ class AlbumsActivity : AppCompatActivity() {
             return albsview
         }
     }
+    var adapter: AlbumAdapter? = null
 }

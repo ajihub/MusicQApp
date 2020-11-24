@@ -8,7 +8,6 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ContextMenu
 import android.view.MenuItem
@@ -17,6 +16,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 
 class QueuedSongsActivity : AppCompatActivity() {
     override fun onCreateContextMenu(
@@ -74,18 +74,17 @@ class QueuedSongsActivity : AppCompatActivity() {
             }
             else -> super.onContextItemSelected(item) }
         }
-
     private lateinit var notificationManager : NotificationManager
     private lateinit var notificationChannel : NotificationChannel
     private lateinit var builder : Notification.Builder
     private val channelId = "i.apps.notifications"
     private val description = "Test notification"
 
-    private fun remove(arr: Array<String>, element: Int): Array<String>{
-        if(element < 0 || element >= arr.size){
-            return arr
+    private fun remove(list: Array<String>, element: Int): Array<String>{
+        if(element < 0 || element >= list.size){
+            return list
         }
-        val list = arr.toMutableList()
+        val list = list.toMutableList()
         list.removeAt(element)
         return list.toTypedArray()
     }

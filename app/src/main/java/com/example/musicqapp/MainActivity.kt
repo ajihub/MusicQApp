@@ -79,8 +79,8 @@ class MainActivity : AppCompatActivity() {
         list.add(element)
         return list.toTypedArray()
     }
-    private fun remove(arr: Array<String>, element: String): Array<String>{
-        val list = arr.toMutableList()
+    private fun remove(list: Array<String>, element: String): Array<String>{
+        val list = list.toMutableList()
         list.remove(element)
         return list.toTypedArray()
     }
