@@ -20,11 +20,6 @@ import android.widget.ListView
 import android.widget.Toast
 
 class QueuedSongsActivity : AppCompatActivity() {
-    lateinit var notificationManager : NotificationManager
-    lateinit var notificationChannel : NotificationChannel
-    lateinit var builder : Notification.Builder
-    private val channelId = "i.apps.notifications"
-    private val description = "Test notification"
 
     override fun onCreateContextMenu(
             menu: ContextMenu?,
@@ -46,9 +41,7 @@ class QueuedSongsActivity : AppCompatActivity() {
         var qList = findViewById<ListView>(R.id.addedSongs)
         qList.adapter = adapter
         registerForContextMenu(qList)
-
     }
-
     override fun onContextItemSelected(item: MenuItem): Boolean {
         var info = item.menuInfo as AdapterView.AdapterContextMenuInfo
         return when (item.itemId){
@@ -71,7 +64,7 @@ class QueuedSongsActivity : AppCompatActivity() {
                         notificationChannel.enableVibration(true)
                         notificationManager.createNotificationChannel(notificationChannel)
 
-                        builder = Notification.Builder(this,channelId).setContentTitle("QUEUE EMPTY").setContentText("Queue is Empty, Add Songs Now.")
+                        builder = Notification.Builder(this,channelId).setContentTitle("QUEUE EMPTY").setContentText("Add Songs to your Queue Now!")
                                 .setSmallIcon(R.drawable.ic_launcher_background)
                                 .setContentIntent(pendingIntent)
                     }else{
@@ -95,4 +88,9 @@ class QueuedSongsActivity : AppCompatActivity() {
         list.removeAt(element)
         return list.toTypedArray()
     }
+    lateinit var notificationManager : NotificationManager
+    lateinit var notificationChannel : NotificationChannel
+    lateinit var builder : Notification.Builder
+    private val channelId = "i.apps.notifications"
+    private val description = "Test notification"
 }
