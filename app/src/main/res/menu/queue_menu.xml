@@ -4,4 +4,8 @@
         android:id="@+id/add_to_queue"
         android:title="Add to Queue">
     </item>
+    <item
+        android:id="@+id/remove_from_queue"
+        android:title="Remove from Queue">
+    </item>
 </menu>

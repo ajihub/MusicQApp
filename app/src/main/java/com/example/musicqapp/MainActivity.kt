@@ -16,7 +16,11 @@ class MainActivity : AppCompatActivity() {
         val list: MutableList<String> = arr.toMutableList()
         list.add(element)
         return list.toTypedArray()
-
+    }
+    private fun remove(arr: Array<String>, element: String): Array<String>{
+        val list: MutableList<String> = arr.toMutableList()
+        list.remove(element)
+        return list.toTypedArray()
     }
     companion object{
         val albumNames = arrayOf("Kimi No Nawa","Naruto","Weathering with You","Your Lie in April", "Spirited Away", "Darling in the Franxx")
@@ -51,13 +55,19 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId){
             R.id.add_to_queue ->{
                 songQueue = append(songQueue, songsArray[info.position])
-                val snackbar = Snackbar.make(findViewById<ListView>(R.id.allSongs), "${songsArray[info.position]} moved to queue", Snackbar.LENGTH_LONG)
-                snackbar.setAction("QUEUE", {
+                val snackbar = Snackbar.make(findViewById<ListView>(R.id.allSongs), "${songsArray[info.position]} moved to queue", Snackbar.LENGTH_INDEFINITE)
+                snackbar.setAction("GO TO QUEUE", {
                     startActivity(Intent(applicationContext, QueuedSongsActivity::class.java))
                 })
                 snackbar.show()
                 return true
             }
+            R.id.remove_from_queue ->{
+                songQueue = remove(songQueue, songsArray[info.position])
+                Toast.makeText(this, "${songsArray[info.position]} removed", Toast.LENGTH_SHORT).show()
+                return true
+            }
+
             else -> super.onContextItemSelected(item) }
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
