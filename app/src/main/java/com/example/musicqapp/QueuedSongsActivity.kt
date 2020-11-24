@@ -6,7 +6,6 @@ import android.app.NotificationManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -20,7 +19,6 @@ import android.widget.ListView
 import android.widget.Toast
 
 class QueuedSongsActivity : AppCompatActivity() {
-
     override fun onCreateContextMenu(
             menu: ContextMenu?,
             v: View?,
@@ -30,20 +28,17 @@ class QueuedSongsActivity : AppCompatActivity() {
         val inflater = menuInflater
         inflater.inflate(R.menu.queue_queue_menu, menu)
     }
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_queued_songs)
-        var adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, MainActivity.queueList)
-        var qList = findViewById<ListView>(R.id.addedSongs)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, MainActivity.queueList)
+        val qList = findViewById<ListView>(R.id.addedSongs)
         qList.adapter = adapter
         registerForContextMenu(qList)
     }
     override fun onContextItemSelected(item: MenuItem): Boolean {
-        var info = item.menuInfo as AdapterView.AdapterContextMenuInfo
+        val info = item.menuInfo as AdapterView.AdapterContextMenuInfo
         return when (item.itemId){
             R.id.remove ->{
                 MainActivity.queueList = remove(MainActivity.queueList, info.position)
@@ -52,8 +47,7 @@ class QueuedSongsActivity : AppCompatActivity() {
                 val newQueue = findViewById<ListView>(R.id.addedSongs)
                 newQueue.adapter = adapter
                 Toast.makeText(this, "Song removed from Queue", Toast.LENGTH_SHORT).show()
-
-                if(MainActivity.queueList.size == 0){
+                if(MainActivity.queueList.isEmpty()){
                     val intent = Intent(this, MainActivity::class.java)
                     val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -79,7 +73,14 @@ class QueuedSongsActivity : AppCompatActivity() {
                 return true
             }
             else -> super.onContextItemSelected(item) }
-    }
+        }
+
+    private lateinit var notificationManager : NotificationManager
+    private lateinit var notificationChannel : NotificationChannel
+    private lateinit var builder : Notification.Builder
+    private val channelId = "i.apps.notifications"
+    private val description = "Test notification"
+
     private fun remove(arr: Array<String>, element: Int): Array<String>{
         if(element < 0 || element >= arr.size){
             return arr
@@ -88,9 +89,4 @@ class QueuedSongsActivity : AppCompatActivity() {
         list.removeAt(element)
         return list.toTypedArray()
     }
-    lateinit var notificationManager : NotificationManager
-    lateinit var notificationChannel : NotificationChannel
-    lateinit var builder : Notification.Builder
-    private val channelId = "i.apps.notifications"
-    private val description = "Test notification"
 }
