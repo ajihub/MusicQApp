@@ -123,6 +123,4 @@ class SongsTableHandler(var context: Context): SQLiteOpenHelper(context, DATABAS
         return true
     }
 
-
-
 }

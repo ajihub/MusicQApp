@@ -4,6 +4,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditSongActivity">
+    tools:context=".EditSongActivity"
+    android:background="@drawable/edit_song_wallpaper">
 
+    <Button
+        android:id="@+id/editSongBtn"
+        android:layout_width="197dp"
+        android:layout_height="72dp"
+        android:text="Update Song"
+        android:textSize="18sp"
+        app:backgroundTint="#0C00B1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/editTitleTxt"
+        app:layout_constraintVertical_bias="0.616" />
+
+    <EditText
+        android:id="@+id/editTitleTxt"
+        android:layout_width="257dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="136dp"
+        android:ems="10"
+        android:hint="Title here"
+        android:inputType="textPersonName"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editArtistTxt"
+        android:layout_width="257dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:hint="Artist here"
+        android:inputType="textPersonName"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTitleTxt" />
+
+    <EditText
+        android:id="@+id/editAlbumTxt"
+        android:layout_width="257dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="36dp"
+        android:ems="10"
+        android:hint="Album here"
+        android:inputType="textPersonName"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editArtistTxt" />
 </androidx.constraintlayout.widget.ConstraintLayout>

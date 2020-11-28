@@ -47,10 +47,9 @@ class AddSongsActivity : AppCompatActivity() {
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
-        inflater.inflate(R.menu.main_menu, menu)
+        inflater.inflate(R.menu.sub_menu, menu)
         return true
     }
-    //Method when an option in the main menu is selected
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId){
             R.id.queue ->{
@@ -63,10 +62,6 @@ class AddSongsActivity : AppCompatActivity() {
             }
             R.id.album ->{
                 startActivity(Intent(this, AlbumsActivity::class.java))
-                true
-            }
-            R.id.add ->{
-                //startActivity(Intent(this, AddSong::class.java))
                 true
             }
             else -> super.onOptionsItemSelected(item)

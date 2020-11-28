@@ -42,6 +42,11 @@ class MainActivity : AppCompatActivity() {
         Lowerbutton.setOnClickListener {
             startActivity(Intent(this, AddSongsActivity::class.java))
         }
+        val Refreshbutton: View = findViewById(R.id.RefreshIcon)
+        Refreshbutton.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+            Toast.makeText(this, "Song List Refreshed", Toast.LENGTH_SHORT).show()
+        }
     }
     override fun onCreateContextMenu(
         menu: ContextMenu?,
@@ -57,14 +62,14 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId){
             R.id.add_to_queue ->{
                 queueList = add(queueList, songs[info.position].toString())
-                val snackbar = Snackbar.make(findViewById<ListView>(R.id.allSongs), "${mainList.flatten()[info.position]} moved to queue", Snackbar.LENGTH_INDEFINITE)
+                val snackbar = Snackbar.make(findViewById<ListView>(R.id.allSongs), "${songs[info.position].toString()} moved to queue", Snackbar.LENGTH_LONG)
                 snackbar.setAction("GO TO QUEUE") { startActivity(Intent(applicationContext, QueuedSongsActivity::class.java)) }
                 snackbar.show()
                 return true
             }
             R.id.remove_from_queue ->{
                 queueList = remove(queueList, songs[info.position].toString())
-                Toast.makeText(this, "${mainList.flatten()[info.position]} removed from Queue", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "${songs[info.position].toString()} removed from Queue", Toast.LENGTH_SHORT).show()
                 return true
             }
             R.id.Edit_song ->{
@@ -77,9 +82,11 @@ class MainActivity : AppCompatActivity() {
             R.id.Delete_song ->{
                 val song = songs[info.position]
                 if(songsTableHandler.delete(song)){
-                    Toast.makeText(applicationContext, "Song has been deleted.", Toast.LENGTH_LONG).show()
+                    songs.removeAt(info.position)
+                    adapter.notifyDataSetChanged()
+                    Toast.makeText(applicationContext, "Song Deleted from List", Toast.LENGTH_LONG).show()
             }else{
-                    Toast.makeText(applicationContext, "Oops something went wrong.", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, "Oops something went wrong!", Toast.LENGTH_LONG).show()
                 }
                 true
             }
@@ -103,6 +110,11 @@ class MainActivity : AppCompatActivity() {
                 true }
             R.id.add_song ->{
                 startActivity(Intent(this, AddSongsActivity::class.java))
+                true
+            }
+            R.id.refresh ->{
+                startActivity(Intent(this, MainActivity::class.java))
+                Toast.makeText(this, "Song List Refreshed", Toast.LENGTH_SHORT).show()
                 true
             }
             else -> super.onOptionsItemSelected(item)

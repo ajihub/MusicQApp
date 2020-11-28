@@ -1,21 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto">>
     <item android:id="@+id/songs"
-        android:title="All Songs">
+        android:title="Back to Songs">
     </item>
     <item android:id="@+id/album"
-        android:title="All Albums">
-    </item>
-    <item android:id="@+id/add_song"
-        android:title="Add a Song">
+        android:title="Back to Albums">
     </item>
     <item android:id="@+id/queue"
         app:showAsAction="ifRoom"
         android:title="Songs Queue">
     </item>
-    <item android:id="@+id/refresh"
-        android:title="Refresh List">
-    </item>
-
 </menu>
