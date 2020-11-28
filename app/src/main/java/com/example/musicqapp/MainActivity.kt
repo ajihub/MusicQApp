@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         val Lowerbutton: View = findViewById(R.id.AddIcon)
         Lowerbutton.setOnClickListener {
-            startActivity(Intent(this, AddSongsActivity::class.java))
+            startActivity(Intent(this, SongsAddActivity::class.java))
         }
         val Refreshbutton: View = findViewById(R.id.RefreshIcon)
         Refreshbutton.setOnClickListener {
@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.Edit_song ->{
                 val songId = songs[info.position].id
-                val intent = Intent(applicationContext, EditSongActivity::class.java)
+                val intent = Intent(applicationContext, SongsEditActivity::class.java)
                 intent.putExtra("songId", songId)
                 startActivity(intent)
                 true
@@ -109,7 +109,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this, AlbumsActivity::class.java))
                 true }
             R.id.add_song ->{
-                startActivity(Intent(this, AddSongsActivity::class.java))
+                startActivity(Intent(this, SongsAddActivity::class.java))
                 true
             }
             R.id.refresh ->{

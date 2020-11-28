@@ -4,60 +4,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SongsAddActivity"
-    android:background="@drawable/add_song_wallpaper">
-
+    android:background="@drawable/edit_album_wallpaper"
+    tools:context=".EditAlbumActivity">
 
     <Button
-        android:id="@+id/addSongBtn"
-        android:layout_width="150dp"
-        android:layout_height="64dp"
-        android:background="#82C899"
-        android:text="Add Song"
+        android:id="@+id/editAlbumBtn"
+        android:layout_width="187dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="60dp"
+        android:text="Update Album"
         android:textSize="18sp"
-        app:backgroundTint="#9A328C"
+        app:backgroundTint="#11A5BF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.638" />
+        app:layout_constraintTop_toBottomOf="@+id/editAlbumTitleTxt" />
 
     <EditText
-        android:id="@+id/addTitleTxt"
+        android:id="@+id/editAlbumTitleTxt"
         android:layout_width="257dp"
         android:layout_height="45dp"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="50dp"
         android:ems="10"
-        android:hint="Input Song Title"
+        android:hint="Input New Album Title"
+        android:inputType="textPersonName"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editReleaseDateTxt" />
+
+    <EditText
+        android:id="@+id/editReleaseDateTxt"
+        android:layout_width="257dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="92dp"
+        android:ems="10"
+        android:hint="Input New Release Date"
         android:inputType="textPersonName"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/addArtistTxt"
-        android:layout_width="257dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="50dp"
-        android:ems="10"
-        android:hint="Input Artist Name"
-        android:inputType="textPersonName"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addTitleTxt" />
-
-    <EditText
-        android:id="@+id/addAlbumTxt"
-        android:layout_width="257dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="50dp"
-        android:ems="10"
-        android:hint="Input Album Name"
-        android:inputType="textPersonName"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addArtistTxt" />
 </androidx.constraintlayout.widget.ConstraintLayout>

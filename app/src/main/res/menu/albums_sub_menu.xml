@@ -4,9 +4,6 @@
     <item android:id="@+id/songs"
         android:title="Back to Songs">
     </item>
-    <item android:id="@+id/album"
-        android:title="Back to Albums">
-    </item>
     <item android:id="@+id/queue"
         app:showAsAction="ifRoom"
         android:title="Songs Queue">

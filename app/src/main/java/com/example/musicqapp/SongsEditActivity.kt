@@ -11,7 +11,7 @@ import android.widget.EditText
 import android.widget.Toast
 import com.example.musicqapp.models.Song
 
-class EditSongActivity : AppCompatActivity() {
+class SongsEditActivity : AppCompatActivity() {
     lateinit var editSongBtn: Button
     lateinit var titleTxt: EditText
     lateinit var artistTxt: EditText
