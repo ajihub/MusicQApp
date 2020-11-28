@@ -8,4 +8,12 @@
         android:id="@+id/remove_from_queue"
         android:title="Remove from Queue">
     </item>
+    <item
+        android:id="@+id/Edit_song"
+        android:title="Edit Song">
+    </item>
+    <item
+        android:id="@+id/Delete_song"
+        android:title="Delete from List">
+    </item>
 </menu>

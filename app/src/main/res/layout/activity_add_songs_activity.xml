@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddSongsActivity"
+    android:background="@drawable/add_song_wallpaper">
+
+
+    <Button
+        android:id="@+id/addSongBtn"
+        android:layout_width="150dp"
+        android:layout_height="64dp"
+        android:background="#82C899"
+        android:text="Add Song"
+        android:textSize="18sp"
+        app:backgroundTint="#9A328C"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.638" />
+
+    <EditText
+        android:id="@+id/addTitleTxt"
+        android:layout_width="257dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="65dp"
+        android:ems="10"
+        android:hint="Input Song Title"
+        android:inputType="textPersonName"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/addArtistTxt"
+        android:layout_width="257dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:hint="Input Artist Name"
+        android:inputType="textPersonName"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addTitleTxt" />
+
+    <EditText
+        android:id="@+id/addAlbumTxt"
+        android:layout_width="257dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:hint="Input Album Name"
+        android:inputType="textPersonName"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addArtistTxt" />
+</androidx.constraintlayout.widget.ConstraintLayout>

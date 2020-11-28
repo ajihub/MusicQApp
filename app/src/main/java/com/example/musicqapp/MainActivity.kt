@@ -8,6 +8,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
+import com.example.musicqapp.models.Song
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
@@ -21,14 +22,26 @@ class MainActivity : AppCompatActivity() {
                                arrayOf("Will you ever forget", "You see, I am a Violinist", "She is Beautiful", "The Scent of Spring", "Violence Over"),
                                arrayOf("One Summer's Day", "A Road to somewhere", "The Empty Restaurant", "The Dragon Boy", "Sootballs", "No Face"),
                                arrayOf("Vanquish", "Miel", "Dropping","CODE:002","VICTORIA","Torikago"))
+
+        lateinit var adapter: ArrayAdapter<Song>
+        lateinit var songs: MutableList<Song>
+        lateinit var songsTableHandler: SongsTableHandler
+        lateinit var songList: ListView
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mainList.flatten())
-        val songList = findViewById<ListView>(R.id.allSongs)
+        songsTableHandler = SongsTableHandler(this)
+        songs = songsTableHandler.read()
+        adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1,songs)
+        songList = findViewById<ListView>(R.id.allSongs)
         songList.adapter = adapter
         registerForContextMenu(songList)
+
+        val Lowerbutton: View = findViewById(R.id.AddIcon)
+        Lowerbutton.setOnClickListener {
+            startActivity(Intent(this, AddSongsActivity::class.java))
+        }
     }
     override fun onCreateContextMenu(
         menu: ContextMenu?,
@@ -43,18 +56,35 @@ class MainActivity : AppCompatActivity() {
         val info = item.menuInfo as AdapterView.AdapterContextMenuInfo
         return when (item.itemId){
             R.id.add_to_queue ->{
-                queueList = add(queueList, mainList.flatten()[info.position])
+                queueList = add(queueList, songs[info.position].toString())
                 val snackbar = Snackbar.make(findViewById<ListView>(R.id.allSongs), "${mainList.flatten()[info.position]} moved to queue", Snackbar.LENGTH_INDEFINITE)
                 snackbar.setAction("GO TO QUEUE") { startActivity(Intent(applicationContext, QueuedSongsActivity::class.java)) }
                 snackbar.show()
                 return true
             }
             R.id.remove_from_queue ->{
-                queueList = remove(queueList, mainList.flatten()[info.position])
+                queueList = remove(queueList, songs[info.position].toString())
                 Toast.makeText(this, "${mainList.flatten()[info.position]} removed from Queue", Toast.LENGTH_SHORT).show()
                 return true
             }
-            else -> super.onContextItemSelected(item) }
+            R.id.Edit_song ->{
+                val songId = songs[info.position].id
+                val intent = Intent(applicationContext, EditSongActivity::class.java)
+                intent.putExtra("songId", songId)
+                startActivity(intent)
+                true
+            }
+            R.id.Delete_song ->{
+                val song = songs[info.position]
+                if(songsTableHandler.delete(song)){
+                    Toast.makeText(applicationContext, "Song has been deleted.", Toast.LENGTH_LONG).show()
+            }else{
+                    Toast.makeText(applicationContext, "Oops something went wrong.", Toast.LENGTH_LONG).show()
+                }
+                true
+            }
+            else -> super.onContextItemSelected(item)
+        }
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         val inflater = menuInflater
@@ -71,6 +101,10 @@ class MainActivity : AppCompatActivity() {
             R.id.album ->{
                 startActivity(Intent(this, AlbumsActivity::class.java))
                 true }
+            R.id.add_song ->{
+                startActivity(Intent(this, AddSongsActivity::class.java))
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }

@@ -2,13 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/songs"
-        android:title="Songs">
+        android:title="All Songs">
     </item>
     <item android:id="@+id/album"
-        android:title="Album">
+        android:title="All Albums">
+    </item>
+    <item android:id="@+id/add_song"
+        android:title="Add a Song">
     </item>
     <item android:id="@+id/queue"
         app:showAsAction="ifRoom"
-        android:title="Queue">
+        android:title="Songs Queue">
     </item>
+
 </menu>

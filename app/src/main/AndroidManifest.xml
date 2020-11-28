@@ -9,10 +9,12 @@
         android:roundIcon="@drawable/launchericon"
         android:supportsRtl="true"
         android:theme="@style/Theme.MusicQApp">
-        <activity android:name="com.example.musicqapp.AlbumDetailsActivity"></activity>
-        <activity android:name="com.example.musicqapp.AlbumsActivity" />
-        <activity android:name="com.example.musicqapp.QueuedSongsActivity" />
-        <activity android:name="com.example.musicqapp.MainActivity">
+        <activity android:name=".EditSongActivity" />
+        <activity android:name=".AddSongsActivity" />
+        <activity android:name=".AlbumDetailsActivity" />
+        <activity android:name=".AlbumsActivity" />
+        <activity android:name=".QueuedSongsActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
